@@ -1,0 +1,24 @@
+html
+	head
+	body
+		form(action="/message" method="post")
+			input(name='topic' type='text' placeholder='Topic' 
+			id='topic')
+			br
+			input(name='message' type='text' placeholder='Message' id='message')
+			br
+			button(type='submit' formmethod='post') Post
+
+
+		h1 Recent posts
+		each message in Messages
+			p Topic: 
+				a(href="/posts/?id="+ message.id) #{message.title}
+
+	script.
+		document.getElementById('topic').value='DEFAULT_TOPIC';
+
+
+		document.getElementById('message').value='DEFAULT_MESSAGE';
+	
+	

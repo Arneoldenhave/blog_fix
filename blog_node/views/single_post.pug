@@ -1,0 +1,22 @@
+html
+	head
+	body
+		h1 Posted by: #{message.user.name}
+
+		p Topic: #{message.title}
+		p #{message.message}
+		if message.comments
+			each comment in message.comments
+				p #{comment.comment}
+		br
+
+		form(action='/comment' method="post")
+			input(name='comment_body', type='text' placeholder='Comment' id="comment") 
+			input(name='message_id', type='hidden' value=message.id) 
+				
+			button(type='submit' formmethod='post') Comment
+
+
+
+			script.
+				document.getElementById('comment').value="..Maar Ik ben vegetarisch..."
